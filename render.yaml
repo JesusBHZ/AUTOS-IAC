@@ -1,0 +1,31 @@
+services:
+type: web
+  name: aplicacion_web
+  runtime: python
+  repo: https://github.com/JesusBHZ/AUTOS-WEB.git
+  plan: free
+  region: oregon
+  buildCommand: pip install -r requirements.txt
+  startCommand: python -m http.server 8000
+
+type: web
+  name: api_rest
+  runtime: python
+  repo: https://github.com/JesusBHZ/AUTOS-POINT.git
+  plan: free
+  region: oregon
+  buildCommand: pip install -r requirements.txt
+  startCommand: cd app && uvicorn main:app --host 0.0.0.0 --port 8000
+
+databases:
+name: autos
+  databaseName: db_autos_sd8j
+  user: user
+  plan: free
+  region: oregon
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
+
+version: "1"
