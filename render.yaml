@@ -1,6 +1,6 @@
 services:
 type: web
-  name: web
+  name: autos_web
   runtime: python
   repo: https://github.com/JesusBHZ/AUTOS-WEB.git
   plan: free
